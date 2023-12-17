@@ -73,7 +73,7 @@ class MazeNode:
         end_node = maze[end[0]][end[1]]
 
         priority_queue = [(0, start_node)]
-        
+
         while priority_queue:
             print("dij while")
             current_distance, current_node = heapq.heappop(priority_queue)
@@ -88,9 +88,10 @@ class MazeNode:
 
             neighbors = [current_node.left, current_node.right, current_node.up, current_node.down]
             # no  path found thus the above elements are none
-            # print(neighbors)
+            print(neighbors)
+            # after filtering none have to do some changes in "if" loop.
             for neighbor in filter(None, neighbors):
-                # print("while for")
+                print("nei = ",neighbor)
                 if not neighbor.visited and not neighbor.is_enemy:
                     new_distance = current_distance + 1
                     if new_distance < neighbor.distance:
