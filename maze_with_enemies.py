@@ -73,26 +73,33 @@ class MazeNode:
         end_node = maze[end[0]][end[1]]
 
         priority_queue = [(0, start_node)]
+        x=maze[start[0]][start[1]]
+        print("pq= ",x)
 
         while priority_queue:
             print("dij while")
             current_distance, current_node = heapq.heappop(priority_queue)
+            # print(current_node.visited)
 
             if current_node.visited:
-                print("dij while if")
+                # print("dij while if")
                 continue
 
             current_node.visited = True
             current_node.distance = current_distance
+            # print("whi af if")
 
             neighbors = [current_node.left, current_node.right, current_node.up, current_node.down]
+            # no  path found thus the above elements are none
+            # print(neighbors)
             for neighbor in filter(None, neighbors):
+                # print("while for")
                 if not neighbor.visited and not neighbor.is_enemy:
                     new_distance = current_distance + 1
                     if new_distance < neighbor.distance:
                         neighbor.distance = new_distance
                         heapq.heappush(priority_queue, (new_distance, neighbor))
-
+        # print(end_node.distance)
         if end_node.distance == float('inf'):
             raise ValueError("No path found")
 
