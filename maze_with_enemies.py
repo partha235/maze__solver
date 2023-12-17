@@ -60,7 +60,7 @@ class MazeNode:
         elif side == "right" and start[1] != cols - 1:
             return (random.randint(1, rows - 2), cols - 1)
         else:
-            return generate_end_on_border(rows, cols, start)
+            return MazeNode.generate_end_on_border(rows, cols, start)
 
     def dijkstra(maze, start, end):
         print("dijkstra alg")
