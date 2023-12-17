@@ -75,9 +75,11 @@ class MazeNode:
         priority_queue = [(0, start_node)]
 
         while priority_queue:
+            print("dij while")
             current_distance, current_node = heapq.heappop(priority_queue)
 
             if current_node.visited:
+                print("dij while if")
                 continue
 
             current_node.visited = True
