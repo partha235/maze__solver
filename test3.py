@@ -137,4 +137,5 @@ start_point = MazeNode.generate_start_on_border(rows, cols)
 end_point = MazeNode.generate_end_on_border(rows, cols, start_point)
 
 # to store and view generated maze.
-MazeNode.visualize_maze_svg(random_maze, [], [], start_point, end_point, [], [], file_name='maze_no_path.svg')
+MazeNode.visualize_maze_svg(random_maze, [], [], start_point, end_point, [], [], file_name='maze.svg')
+MazeNode.visualize_maze_svg(random_maze, [], [], start_point, end_point, [], [], file_name='maze.img')

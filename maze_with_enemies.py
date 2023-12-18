@@ -103,6 +103,10 @@ class MazeNode:
 
         path = []
         current_node = end_node
+
+
+
+        
         while current_node != start_node:
             path.append((current_node.row, current_node.col))
             neighbors = [current_node.left, current_node.right, current_node.up, current_node.down]
