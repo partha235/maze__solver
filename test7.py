@@ -213,12 +213,11 @@ def generate_a_new_maze():
                     print("Number of Enemies:", random_num_enemies)
                     print("Shortest Path (Original):", shortest_path)
                     print("Shortest Path (Avoiding Enemies):", new_shortest_path)
-                    repoi=0
+                    repoi=0   # declaring to count rewards on path
                     for i in shortest_path:
                         if i in reward_locations:
-                            repoi+=1
-                    print("point = ",repoi) 
-
+                            repoi+=1      # increase with number of rewards on path.
+                    print("reward points = ",repoi) # return the total number of reward points crossed.
 
 
                     visualize_maze_svg(random_maze, shortest_path, start_point, end_point, reward_locations, new_shortest_path,
