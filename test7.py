@@ -5,7 +5,7 @@ import math
 
 
 class MazeNode:
-    def _init_(self, row, col):
+    def __init__(self, row, col):
         self.row = row
         self.col = col
         self.left = None
@@ -17,7 +17,7 @@ class MazeNode:
         self.is_enemy = False
         self.is_reward = False
 
-    def _lt_(self, other):
+    def __lt__(self, other):
         return self.distance < other.distance
 
 def generate_random_maze(rows, cols, num_enemies=10, num_rewards=5):
@@ -171,6 +171,7 @@ def visualize_maze_svg(maze, path, start, end, rewards, enemies, file_name='maze
             dwg.add(dwg.line((x1, y1), (x2, y2), stroke=svgwrite.rgb(0, 255, 0, '%'), stroke_width=4))
 
     for reward_location in rewards:
+        print("r_loc =  ",reward_location)  # print location of rewards.
         row, col = reward_location
         x, y = col * cell_size + cell_size / 2, row * cell_size + cell_size / 2
         dwg.add(dwg.circle(center=(x, y), r=(cell_size - 2 * padding) / 2, fill=svgwrite.rgb(128, 0, 128, '%')))
