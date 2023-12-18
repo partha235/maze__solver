@@ -169,16 +169,15 @@ def visualize_maze_svg(maze, path, start, end, rewards, enemies, file_name='maze
             x1, y1 = col1 * cell_size + cell_size / 2, row1 * cell_size + cell_size / 2
             x2, y2 = col2 * cell_size + cell_size / 2, row2 * cell_size + cell_size / 2
             dwg.add(dwg.line((x1, y1), (x2, y2), stroke=svgwrite.rgb(0, 255, 0, '%'), stroke_width=4))
-    z=0
+  
     for reward_location in rewards:
-        z+=1
-        print(z,"  r_loc =  ",reward_location)  # print location of rewards.
+
         row, col = reward_location
         x, y = col * cell_size + cell_size / 2, row * cell_size + cell_size / 2
         dwg.add(dwg.circle(center=(x, y), r=(cell_size - 2 * padding) / 2, fill=svgwrite.rgb(128, 0, 128, '%')))        
 
+
     dwg.save()
-    
     
 
 def generate_a_new_maze():
@@ -214,9 +213,18 @@ def generate_a_new_maze():
                     print("Number of Enemies:", random_num_enemies)
                     print("Shortest Path (Original):", shortest_path)
                     print("Shortest Path (Avoiding Enemies):", new_shortest_path)
+                    repoi=0
+                    for i in shortest_path:
+                        if i in reward_locations:
+                            repoi+=1
+                    print("point = ",repoi) 
+
+
 
                     visualize_maze_svg(random_maze, shortest_path, start_point, end_point, reward_locations, new_shortest_path,
                                         file_name='maze_with_paths.svg')
+
+    
 
                 else:
                     print("No path found after adding enemies.")
