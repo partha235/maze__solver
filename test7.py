@@ -169,9 +169,10 @@ def visualize_maze_svg(maze, path, start, end, rewards, enemies, file_name='maze
             x1, y1 = col1 * cell_size + cell_size / 2, row1 * cell_size + cell_size / 2
             x2, y2 = col2 * cell_size + cell_size / 2, row2 * cell_size + cell_size / 2
             dwg.add(dwg.line((x1, y1), (x2, y2), stroke=svgwrite.rgb(0, 255, 0, '%'), stroke_width=4))
-
+    z=0
     for reward_location in rewards:
-        print("r_loc =  ",reward_location)  # print location of rewards.
+        z+=1
+        print(z,"  r_loc =  ",reward_location)  # print location of rewards.
         row, col = reward_location
         x, y = col * cell_size + cell_size / 2, row * cell_size + cell_size / 2
         dwg.add(dwg.circle(center=(x, y), r=(cell_size - 2 * padding) / 2, fill=svgwrite.rgb(128, 0, 128, '%')))
@@ -184,7 +185,8 @@ def generate_a_new_maze():
     random_num_enemies = random.randint(1, 10) + 20
 
     print("Generating a new maze")
-    random_maze = generate_random_maze(rows, cols, num_enemies=random_num_enemies, num_rewards=5)
+    random_maze = generate_random_maze(rows, cols, num_enemies=random_num_enemies, num_rewards=10)
+    # increase number of rewards in maze.
     start_point = generate_start_on_border(rows, cols)
     end_point = generate_end_on_border(rows, cols, start_point)
 
