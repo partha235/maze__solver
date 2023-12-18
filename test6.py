@@ -171,7 +171,6 @@ def visualize_maze_svg(maze, path, start, end, rewards, enemies, file_name='maze
             dwg.add(dwg.line((x1, y1), (x2, y2), stroke=svgwrite.rgb(0, 255, 0, '%'), stroke_width=4))
 
     for reward_location in rewards:
-        print("r_loc =  ",reward_location)
         row, col = reward_location
         x, y = col * cell_size + cell_size / 2, row * cell_size + cell_size / 2
         dwg.add(dwg.circle(center=(x, y), r=(cell_size - 2 * padding) / 2, fill=svgwrite.rgb(128, 0, 128, '%')))
